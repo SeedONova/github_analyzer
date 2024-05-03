@@ -1,0 +1,52 @@
+<header>
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <a
+          href="#"
+          class="list-group-item list-group-item-action py-2 ripple active"
+          aria-current="true"
+        >
+          <i class="fas fa-tachometer-alt fa-fw me-3"></i
+          ><span>Main dashboard</span>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+          <i class="fas fa-chart-area fa-fw me-3"></i
+          ><span>Repositories</span>
+        </a>
+        <a
+          href="#"
+          class="list-group-item list-group-item-action py-2 ripple"
+          (click)="logOut()"
+        >
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Logout</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <nav
+    id="main-navbar"
+    class="navbar navbar-expand-lg navbar-light bg-white fixed-top"
+  >
+    <div class="navbar-brand h1 ms-5">GitHub Analyzer</div>
+  </nav>
+</header>
+
+<main style="margin-top: 58px" class="cards-container">
+  <div class="card bg-light mb-3" style="width: 25rem; height: 154px;">
+    <div class="card-header">Favorite Languages</div>
+    <div class="card-body">
+      <h5 class="card-title">JavaScript</h5>
+      <p class="card-text">Score:</p>
+    </div>
+  </div>
+
+  <div class="card bg-light mb-3" style="width: 25rem; height: 154px;">
+    <div class="card-header">Current Repository</div>
+    <div class="card-body">
+      <h5 class="card-title">Axrail_test</h5>
+      <p class="card-text">Last update: </p>
+    </div>
+  </div>
+</main>
