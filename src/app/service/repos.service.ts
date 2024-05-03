@@ -48,7 +48,20 @@ export class ReposService {
     };
   }
 
-  getCurrentRepo(): Repo[] {
-    return this.repos;
-  }
+  getCurrentRepo(): Repo | undefined {
+    if (this.repos.length === 0) {
+      console.log("No repositories to show.");
+      return undefined;
+    }
+
+    const latestRepo = this.repos.reduce((latest, current) => {
+      const latestDate = new Date(latest.created_at);
+      const currentDate = new Date(current.created_at);
+
+      return currentDate > latestDate ? current : latest;
+    });
+
+    console.log("Latest Repository:", latestRepo);
+    return latestRepo;
+}
 }

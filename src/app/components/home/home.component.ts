@@ -17,6 +17,8 @@ export class HomeComponent {
   username: string = '';
   token: string = '';
   repoUrl: string = '';
+  currentRepName: string | undefined = '';
+  currentRepDate: string | undefined = '';
   http = inject(HttpClient);
   
   constructor(
@@ -34,12 +36,19 @@ export class HomeComponent {
       console.log('No token found, redirecting to login.');
       this.router.navigateByUrl('/login');
     } else {
-      if(!this.repoUrl){
-        
-      }
       this.repoService.getRepos().subscribe({
         next: (repos) => {
           console.log('Repositories loaded:', repos);
+          const currentRepo = this.repoService.getCurrentRepo();
+          this.currentRepName = currentRepo?.name;
+          this.currentRepDate = currentRepo?.created_at;
+          console.log(currentRepo?.created_at)
+          console.log(currentRepo?.name)
+          if (currentRepo) {
+            console.log('Current Repository:', currentRepo);
+          } else {
+            console.log('No current repository found');
+          }
         },
         error: (error) => {
           console.error('Error fetching repositories:', error);
@@ -47,6 +56,7 @@ export class HomeComponent {
       });
     }
   }
+  
 
   logOut() {
     this.localStorageService.clear();
